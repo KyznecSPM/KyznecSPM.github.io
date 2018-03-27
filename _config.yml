@@ -93,8 +93,8 @@ social:
 
   - name: LinkedIn
     icon: linkedin
-    username: 
-    url: 
+    username:
+    url:
     desc: Connect with me on LinkedIn
     share: false
 
@@ -115,7 +115,7 @@ social:
   - name: Instagram
     icon: instagram
     username: di.eme
-    url: https://www.insagram.com/di.eme/
+    url: https://www.instagram.com/di.eme/
     desc: Follow me on Instagram
     share: false
 

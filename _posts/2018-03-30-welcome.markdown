@@ -4,7 +4,6 @@ title:  "Привет мир :)"
 date:   2018-03-30
 author: Emelianov Dmitriy
 categories: hello
-tags:	hello_IT_world!
 cover:  "/assets/instacode.png"
 ---
 

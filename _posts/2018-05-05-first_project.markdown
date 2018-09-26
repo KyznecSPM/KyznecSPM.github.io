@@ -3,8 +3,7 @@ layout: post
 title:  "Brain-games"
 date:   2018-05-05
 author: Emelianov Dmitriy
-categories: hello
-tags:	hexlet
+categories: hexlet
 cover:  "/assets/instacode.png"
 ---
 

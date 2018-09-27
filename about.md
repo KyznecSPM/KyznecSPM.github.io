@@ -1,5 +1,5 @@
 ---
 layout: page
-title: "Резюме для работодателей"
+title: "Резюме"
 permalink: /curriculumvitae/
 ---

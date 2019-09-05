@@ -1,7 +1,41 @@
-.mystyleTest {
+.wrap {
+	width: 210px; /*фиксируем ширину обертки*/
+	margin: 0 auto; /*центрируем ее*/
+	//background: darkgray;
+	height: 45px; /*Задаем высоту обертки*/
+}
+
+.bblock {
+	float: left; /*Задаем обтекание*/
+	line-height: 45px; /*Высота строки +  верт. центрирования текста*/
+	font-size: 40px;
+	//background: dodgerblue;
+
+	width: 45px; /*Фиксируем ширину блока*/
+	margin-right: 10px;
+	border-radius: 10px;
+	text-align: center; /*Центрируем текст по горизонтали*/
+}
+
+.bblock:hover {
+	transition-duration: 0.5s;
+	background-color: #2980b9;
+	color: white;
+}
+
+.wrap :last-child {
+	margin-right: 0px; /*Убираем поле последнего div-а*/
+}
+.margin {
+	margin-top: 15px;
+}
+
+.avatar {
 	width: 200px;
 	height: 200px;
-	background-color: aqua;
-	margin: 0 auto;
 	border-radius: 200px;
+	margin: 0 auto;
+	background: url("https://avatars0.githubusercontent.com/u/29660720?s=400&u=7eb61601b27b81e5798d9e07021aa55678a141ad&v=4")
+		no-repeat center;
+	background-size: 300px auto;
 }

@@ -1,7 +1,8 @@
 # External gems
 gems:
   - jekyll-sitemap
-  - jekyll-paginate
+
+plugins: [jekyll-paginate]
 
 exclude:
   - "/vendor/"
@@ -12,7 +13,7 @@ subtitle: из менеджера в программисты
 email: eme.di@ya.ru
 name: Емельянов Дмитрий
 description: >
-   I LOVE IT!
+  I LOVE IT!
 # Base URL of site (i.e. /blog). It should always start with a slash,
 # and never end with a slash. Set it to a blank value if hosting at the
 # root of your server.
@@ -27,7 +28,6 @@ paginate: 5
 paginate_path: "/page:num/"
 inter_post_navigation: false
 highlightjs_theme: "monokai-sublime"
-
 
 # Social icons and sharing options
 

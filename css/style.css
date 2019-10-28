@@ -606,6 +606,7 @@ a {
   width: 140px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
   transition: background-color 0.2s linear;
+  text-align: center;
 }
 
 .btn.btn-contact:last-child {

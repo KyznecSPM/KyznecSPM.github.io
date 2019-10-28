@@ -59,25 +59,20 @@ HMACSHA256(
 
 Код создания токена в роуте регистрации/авторизации:
 
-```
-jwt.sign(
-        payload,
-        'secretWord',
-        { expiresIn: 360000 },
-        (err, token) => {
-          if (err) throw err;
-          res.json({ token });
-        }
-      );
+```javascript
+jwt.sign(payload, "secretWord", { expiresIn: 360000 }, (err, token) => {
+  if (err) throw err;
+  res.json({ token });
+});
 ```
 
 В метод sign первым параметром передаём полезную нагрузку, в нашем случае это объект вида:
 
-```
+```javascript
 {
-    user: {
-        id: user.id
-    }
+  user: {
+    id: user.id;
+  }
 }
 ```
 
@@ -89,43 +84,45 @@ jwt.sign(
 
 На клиенте при получении ответа в редьюсере отвечающем за события "успешная регистрация", "успешная авторизация" происходит запись токена в localStorage. (оставляю статью на [хабре](https://habr.com/ru/post/349164/), почему хранение токена в localStorage не самая лучшая идея, но по скольку проект учебный тему безопасности можно опустить).
 
-`localStorage.setItem('token', payload.token);`
+```javascript
+localStorage.setItem("token", payload.token);
+```
 
 В корневом компоненте <App /> происходит проверка наличия токена в localStorage и, если он есть, мы записываем его в дефолтный заголовок запроса. Все дальнейшие запросы из приложения будут идти с этим заголовком.
 
 Функция записи токена в заголовок запроса:
 _(используется библиотека axios)_
 
-```
+```javascript
 const setAuthToken = token => {
   if (token) {
-    axios.defaults.headers.common['x-auth-token'] = token;
+    axios.defaults.headers.common["x-auth-token"] = token;
   } else {
-    delete axios.defaults.headers.common['x-auth-token'];
+    delete axios.defaults.headers.common["x-auth-token"];
   }
 };
 ```
 
 На строрне сервера все приватные маршруты обрабатываются middleware, который проверяет наличие токена и декодирует из него id пользователя.
 
-```
+```js
 module.exports = function(req, res, next) {
   // Получаем токен из заголовка
-  const token = req.header('x-auth-token');
+  const token = req.header("x-auth-token");
 
   // Проверяем присутствие токена
   if (!token) {
-    return res.status(401).json({ msg: 'No token, authorization denied' });
+    return res.status(401).json({ msg: "No token, authorization denied" });
   }
 
   // Верифицируем токен
   try {
-    const decoded = jwt.verify(token, config.get('jwtSecret'));
+    const decoded = jwt.verify(token, config.get("jwtSecret"));
 
     req.user = decoded.user;
     next();
   } catch (err) {
-    res.status(401).json({ msg: 'Token is not valid' });
+    res.status(401).json({ msg: "Token is not valid" });
   }
 };
 ```

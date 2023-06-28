@@ -5,7 +5,7 @@ import { Page } from "grommet/components/Page";
 // import { PageContent } from "grommet/components/PageContent";
 import { deepMerge } from "grommet/utils";
 
-import { Promo } from "../components/Promo";
+import { Intro } from "../components/Intro";
 
 const theme: ThemeType = deepMerge(grommet, {
   global: {
@@ -17,7 +17,7 @@ const theme: ThemeType = deepMerge(grommet, {
         value: 425,
       },
       medium: {
-        value: 1024,
+        value: 1023,
       },
       large: {
         value: 2000,
@@ -35,8 +35,8 @@ const theme: ThemeType = deepMerge(grommet, {
 const IndexPage: React.FC<PageProps> = () => {
   return (
     <Grommet full theme={theme}>
-      <Page>
-        <Promo />
+      <Page kind="narrow">
+        <Intro />
       </Page>
     </Grommet>
   );

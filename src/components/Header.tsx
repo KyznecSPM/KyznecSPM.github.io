@@ -3,12 +3,17 @@ import React, { useContext } from "react";
 import {
   Anchor,
   Box,
-  Header as HeaderComponent,
+  Header as LibHeaderComponent,
   Menu,
   ResponsiveContext,
 } from "grommet";
 import { Menu as MenuIcon } from "grommet-icons";
 import { LogoIcon } from "../icons/Logo";
+import styled from "styled-components";
+
+const HeaderComponent = styled(LibHeaderComponent)`
+  z-index: 2;
+`;
 
 enum WindowSize {
   small = "small",
@@ -16,6 +21,13 @@ enum WindowSize {
   large = "large",
   xlarge = "xlarge",
 }
+
+const MENU_ITEMS = [
+  { label: "About me" },
+  { label: "Experience" },
+  { label: "Education" },
+  { label: "Contact" },
+];
 
 export const Header = () => {
   const size = useContext(ResponsiveContext) as WindowSize;
@@ -29,20 +41,16 @@ export const Header = () => {
             a11yTitle="Navigation Menu"
             dropProps={{ align: { top: "bottom", right: "right" } }}
             icon={<MenuIcon color="light-2" />}
-            items={[
-              {
-                label: <Box pad="small">About Me</Box>,
-              },
-              {
-                label: <Box pad="small">Experience</Box>,
-              },
-            ]}
+            items={MENU_ITEMS.map(({ label }) => ({
+              label: <Box pad="small">{label}</Box>,
+            }))}
           />
         </Box>
       ) : (
         <Box justify="end" direction="row" gap="medium">
-          <Anchor label="Grommet.io" />
-          <Anchor label="Feedback" />
+          {MENU_ITEMS.map(({ label }) => (
+            <Anchor label={label} />
+          ))}
         </Box>
       )}
     </HeaderComponent>

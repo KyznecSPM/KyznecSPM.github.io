@@ -7,20 +7,16 @@ import {
   Menu,
   ResponsiveContext,
 } from "grommet";
+
 import { Menu as MenuIcon } from "grommet-icons";
-import { LogoIcon } from "../icons/Logo";
 import styled from "styled-components";
+
+import { LogoIcon } from "../icons/Logo";
+import { WindowSize } from "../utils";
 
 const HeaderComponent = styled(LibHeaderComponent)`
   z-index: 2;
 `;
-
-enum WindowSize {
-  small = "small",
-  medium = "medium",
-  large = "large",
-  xlarge = "xlarge",
-}
 
 const MENU_ITEMS = [
   { label: "About me" },

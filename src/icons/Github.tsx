@@ -1,4 +1,5 @@
 import React from "react";
+
 import { Blank, Icon } from "grommet-icons";
 
 export const GithubIcon: Icon = (props) => (

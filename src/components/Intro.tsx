@@ -1,4 +1,5 @@
 import * as React from "react";
+
 import {
   Heading,
   Button,
@@ -7,18 +8,21 @@ import {
   Avatar,
   Image as LibImage,
 } from "grommet";
+
 import { PageContent } from "grommet/components/PageContent";
 import { TextAlignType, HeightType } from "grommet/utils";
 import styled from "styled-components";
 
-import background from "../images/background.webp";
+import { useAdaptiveFontSize } from "../hooks/useAdaptiveFontSize";
+import { GithubIcon } from "../icons/Github";
+import { LinkedInIcon } from "../icons/LinkedIn";
+import { TelegramIcon } from "../icons/Telegram";
 import avatar from "../images/avatar.png";
 import avatar_small from "../images/avatar_small.png";
+import background from "../images/background.webp";
+import { WindowSize } from "../utils";
 
-import { LinkedInIcon } from "../icons/LinkedIn";
 import { Header } from "./Header";
-import { TelegramIcon } from "../icons/Telegram";
-import { GithubIcon } from "../icons/Github";
 
 const ImageWrapper = styled(Box)`
   position: relative;
@@ -30,25 +34,11 @@ const Image = styled(LibImage)`
   left: -320px;
 `;
 
-enum WindowSize {
-  small = "small",
-  medium = "medium",
-  large = "large",
-  xlarge = "xlarge",
-}
-
 const FULL_NAME = "Dmitrii Emelianov";
 const JOB_TITLE = "Software Developer";
 const DOWNLOAD_BUTTON = "DOWNLOAD CV";
 
 const FONT_COLOR = "rgba(237, 237, 237, 0.80)";
-
-const FONT_SIZE = {
-  [WindowSize.small]: "medium",
-  [WindowSize.medium]: "medium",
-  [WindowSize.large]: "large",
-  [WindowSize.xlarge]: "xlarge",
-};
 
 type Height = {
   [key in WindowSize]: HeightType;
@@ -79,7 +69,7 @@ const HEIGHT: Height = {
 
 export const Intro = () => {
   const size = React.useContext(ResponsiveContext) as WindowSize;
-  const fontSize = FONT_SIZE[size];
+  const fontSize = useAdaptiveFontSize();
 
   const isDesktop = size === WindowSize.large || size === WindowSize.xlarge;
   const isTablet = size === WindowSize.medium;
@@ -142,7 +132,7 @@ export const Intro = () => {
       {isDesktop ? (
         <Box direction="row" height="100%">
           <Box alignSelf="center">{BIO}</Box>
-          <Box flex justify="end">
+          <Box flex justify="end" align="center">
             <ImageWrapper>
               <Image src={avatar} />
             </ImageWrapper>

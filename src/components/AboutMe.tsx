@@ -30,7 +30,17 @@ const HARD_SKILLS = [
   },
   {
     title: "Libraries",
-    values: ["React", "Angular", "Next", "Gatsby", "Nest", "Apollo GraphQL"],
+    values: [
+      "React",
+      "Redux",
+      "React Query",
+      "Formik",
+      "React Hook Form",
+      "Koa",
+      "Gatsby",
+      "Nest",
+      "Apollo GraphQL",
+    ],
   },
   {
     title: "Devops",
@@ -39,12 +49,13 @@ const HARD_SKILLS = [
       "GitLab CI/CD",
       "Docker & Docker Compose",
       "Kubernetes",
+      "Serverless",
       "Webpack",
     ],
   },
   {
     title: "Cloud",
-    values: ["AWS", "GCP"],
+    values: ["AWS.S3", "AWS.Cloudfront", "AWS.DynamoDB", "AWS.Lambda"],
   },
 ];
 

@@ -1,12 +1,4 @@
-.DS_Store
-.jekyll-cache
-
-# Compiled site
-_site
-
-# Sass garbage
-.sass-cache
-
-# Bundler
-.bundle/
-vendor/
+node_modules/
+.cache/
+public
+src/gatsby-types.d.ts

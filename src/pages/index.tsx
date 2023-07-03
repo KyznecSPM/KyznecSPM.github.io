@@ -10,6 +10,7 @@ import { Contact } from "../components/Contact";
 import { Education } from "../components/Education";
 import { Experience } from "../components/Experience";
 import { Intro } from "../components/Intro";
+import { SEO } from "../components/Seo";
 import { theme } from "../theme";
 
 const IndexPage: React.FC<PageProps> = () => {
@@ -28,4 +29,4 @@ const IndexPage: React.FC<PageProps> = () => {
 
 export default IndexPage;
 
-export const Head: HeadFC = () => <title>Home Page</title>;
+export const Head: HeadFC = () => <SEO />;

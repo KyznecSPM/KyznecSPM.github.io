@@ -2,6 +2,7 @@ import React from "react";
 
 import { Box, Heading, Text } from "grommet";
 
+import { NAV_LINKS } from "../constants";
 import { useAdaptiveFontSize } from "../hooks/useAdaptiveFontSize";
 import { useAdaptiveSizeMap } from "../hooks/useAdaptiveSize";
 import { HexletIcon } from "../icons/Hexlet";
@@ -32,8 +33,14 @@ export const Education = () => {
   const basis = useAdaptiveSizeMap(COURSE_IMAGE_SIZE);
   const fontSize = useAdaptiveFontSize();
   return (
-    <Section title="Education">
-      <Box direction="row" gap="32px" margin={{ bottom: "64px" }}>
+    <Section id={NAV_LINKS.education} title="Education">
+      <Box
+        direction="row"
+        gap="32px"
+        margin={{ bottom: "64px" }}
+        data-sal="slide-up"
+        data-sal-duration={1_400}
+      >
         <Box basis={width}>
           <MaiIcon width={width} />
         </Box>
@@ -46,10 +53,17 @@ export const Education = () => {
           </Text>
         </Box>
       </Box>
-      <Box width="100%" align="center">
-        <Heading level={3} margin={{ top: "0px", bottom: "0px" }}>
-          Online courses
-        </Heading>
+      <Box
+        width="100%"
+        align="center"
+        data-sal="slide-up"
+        data-sal-duration={1_400}
+      >
+        <Box margin={{ bottom: "32px" }}>
+          <Heading level={3} margin={{ top: "0px", bottom: "0px" }}>
+            Online courses
+          </Heading>
+        </Box>
         <Box direction="row" justify="center" width="100%" wrap>
           <Box
             basis={basis}

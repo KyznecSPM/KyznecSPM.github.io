@@ -11,8 +11,10 @@ import {
 
 import { PageContent } from "grommet/components/PageContent";
 import { TextAlignType, HeightType } from "grommet/utils";
+import { Mail } from "grommet-icons";
 import styled from "styled-components";
 
+import cv_link from "../assets/CV_Dmitrii_Emelianov.pdf";
 import { useAdaptiveFontSize } from "../hooks/useAdaptiveFontSize";
 import { GithubIcon } from "../icons/Github";
 import { LinkedInIcon } from "../icons/LinkedIn";
@@ -67,56 +69,110 @@ const HEIGHT: Height = {
   },
 };
 
-export const Intro = () => {
-  const size = React.useContext(ResponsiveContext) as WindowSize;
-  const fontSize = useAdaptiveFontSize();
+const LINKS = [
+  {
+    icon: <Mail />,
+    href: "",
+  },
+  {
+    icon: <TelegramIcon />,
+    href: "https://t.me/kyznecspm",
+  },
+  {
+    icon: <LinkedInIcon />,
+    href: "https://www.linkedin.com/in/kyznec/",
+  },
+  {
+    icon: <GithubIcon />,
+    href: "https://github.com/KyznecSPM",
+  },
+];
 
-  const isDesktop = size === WindowSize.large || size === WindowSize.xlarge;
+const Bio = () => {
+  const size = React.useContext(ResponsiveContext) as WindowSize;
+
   const isTablet = size === WindowSize.medium;
   const isMobile = size === WindowSize.small;
-
+  const fontSize = useAdaptiveFontSize();
   const textAlign: TextAlignType = isTablet || isMobile ? "center" : "start";
 
-  const BIO = (
+  return (
     <>
-      <Box margin={{ bottom: "38px" }} justify={textAlign}>
-        <Heading
-          level={1}
-          size={fontSize}
-          color={FONT_COLOR}
-          textAlign={textAlign}
-          margin={{ top: "0px", bottom: "8px" }}
+      <Box margin={{ bottom: "38px", left: "16px" }} justify={textAlign}>
+        <Box
+          animation={[
+            { type: "fadeIn", duration: 1_400 },
+            { type: "slideRight", duration: 1_400 },
+          ]}
         >
-          {FULL_NAME}
-        </Heading>
-        <Heading
-          level={2}
-          size={fontSize}
-          color={FONT_COLOR}
-          textAlign={textAlign}
-          margin={{ top: "0px", bottom: "0px" }}
-        >
-          {JOB_TITLE}
-        </Heading>
-      </Box>
-      <Box gap="32px" align={textAlign}>
-        <Box align={"center"}>
-          <Button label={DOWNLOAD_BUTTON} />
+          <Heading
+            level={1}
+            size={fontSize}
+            color={FONT_COLOR}
+            textAlign={textAlign}
+            margin={{ top: "0px", bottom: "8px" }}
+          >
+            {FULL_NAME}
+          </Heading>
         </Box>
-        <Box direction="row" align="center" gap="32px">
-          <Box round="full" width="fit-content">
-            <Button primary icon={<LinkedInIcon />} />
-          </Box>
-          <Box round="full" width="fit-content">
-            <Button primary icon={<TelegramIcon />} />
-          </Box>
-          <Box round="full" width="fit-content">
-            <Button primary icon={<GithubIcon />} />
-          </Box>
+        <Box
+          animation={[
+            { type: "fadeIn", duration: 1_400, delay: 400 },
+            { type: "slideRight", duration: 1_400, delay: 400 },
+          ]}
+        >
+          <Heading
+            level={2}
+            size={fontSize}
+            color={FONT_COLOR}
+            textAlign={textAlign}
+            margin={{ top: "0px", bottom: "0px" }}
+          >
+            {JOB_TITLE}
+          </Heading>
+        </Box>
+      </Box>
+      <Box
+        align={textAlign}
+        animation={[{ type: "fadeIn", duration: 1_400, delay: 1400 }]}
+      >
+        <Box align={"center"} margin={{ left: "16px" }}>
+          <Button
+            label={DOWNLOAD_BUTTON}
+            href={cv_link}
+            target="_blank"
+            rel="noopener noreferrer"
+          />
+        </Box>
+        <Box direction="row" align="center" wrap justify="center">
+          {LINKS.map(({ icon, href }) => (
+            <Box
+              key={href}
+              round="full"
+              width="fit-content"
+              margin={{ top: "32px", right: "16px", left: "16px" }}
+            >
+              <Button
+                primary
+                icon={icon}
+                target="_blank"
+                rel="noopener noreferrer"
+                href={href}
+              />
+            </Box>
+          ))}
         </Box>
       </Box>
     </>
   );
+};
+
+export const Intro = () => {
+  const size = React.useContext(ResponsiveContext) as WindowSize;
+
+  const isDesktop = size === WindowSize.large || size === WindowSize.xlarge;
+  const isTablet = size === WindowSize.medium;
+  const isMobile = size === WindowSize.small;
 
   return (
     <PageContent
@@ -131,9 +187,11 @@ export const Intro = () => {
       <Header />
       {isDesktop ? (
         <Box direction="row" height="100%">
-          <Box alignSelf="center">{BIO}</Box>
+          <Box alignSelf="center">
+            <Bio />
+          </Box>
           <Box flex justify="end" align="center">
-            <ImageWrapper>
+            <ImageWrapper animation={[{ type: "fadeIn", duration: 1_400 }]}>
               <Image src={avatar} />
             </ImageWrapper>
           </Box>
@@ -142,7 +200,11 @@ export const Intro = () => {
         <Box flex justify="center" pad="medium">
           {isMobile && (
             <Box align="center" margin={{ bottom: "16px" }}>
-              <Avatar src={avatar_small} size="4xl" />
+              <Avatar
+                src={avatar_small}
+                size="4xl"
+                animation={[{ type: "fadeIn", duration: 1_400 }]}
+              />
             </Box>
           )}
           {isTablet && (
@@ -153,6 +215,7 @@ export const Intro = () => {
               alignSelf="center"
               margin={{ bottom: "16px" }}
               width="100%"
+              animation={[{ type: "fadeIn", duration: 1_400 }]}
               background={{
                 image: `url(${avatar})`,
                 size: "contain",
@@ -166,8 +229,7 @@ export const Intro = () => {
               }}
             />
           )}
-
-          {BIO}
+          <Bio />
         </Box>
       )}
     </PageContent>

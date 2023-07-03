@@ -2,22 +2,22 @@ import React from "react";
 
 import {
   Box,
-  Stack,
-  Diagram,
-  DiagramConnectionAnchor,
-  DiagramConnectionType,
   Heading,
   Card,
   CardHeader,
   CardBody,
-  DiagramProps,
   Anchor,
   Text,
+  CardFooter,
+  Tag,
 } from "grommet";
 
 import styled from "styled-components";
 
+import { NAV_LINKS } from "../constants";
 import { useAdaptiveFontSize } from "../hooks/useAdaptiveFontSize";
+import { useAdaptiveSizeMap } from "../hooks/useAdaptiveSize";
+import { WindowSize } from "../utils";
 
 import { Section } from "./Section";
 
@@ -25,18 +25,12 @@ const Link = styled(Anchor)`
   z-index: 2;
 `;
 
-const anchor: DiagramConnectionAnchor = "vertical";
-const type: DiagramConnectionType = "curved";
-const color: string = "brand";
-const thickness = "xsmall";
-
-const DEFAULT = {
-  anchor,
-  color,
-  thickness,
-  type,
-  round: true,
-};
+const TagWrapper = styled(Box)`
+  & > div {
+    margin-top: 16px;
+    margin-right: 8px;
+  }
+`;
 
 const WORK_EXPERIENCE = [
   {
@@ -46,13 +40,23 @@ const WORK_EXPERIENCE = [
     dateEnd: null,
     website: { link: "https://magellanx.co/", label: "magellanx.co" },
     keyValues: [
-      "Developing backend services on Apollo GraphQL and Koa",
-      "Migration development for PostgreSQL",
-      "Custom template development for Azure AD",
-      "Web application development in React (SPA, PWA)",
-      "Unit and integration testing of JEST + Storybook Jest Addon",
-      "Finalizing deployment scripts for Circle CI",
-      "Docker and Docker Compose containerization",
+      "Developing backend services",
+      "Developing database migration scripts",
+      "Template development",
+      "Web application development",
+      "Unit and integration testing",
+      "Finalizing deployment scripts",
+    ],
+    techStack: [
+      "React",
+      "Apollo GraphQL",
+      "Koa",
+      "Circle CI",
+      "Jest",
+      "React Testing Library",
+      "Storybook",
+      "Docker",
+      "Docker Compose",
     ],
   },
   {
@@ -62,9 +66,18 @@ const WORK_EXPERIENCE = [
     dateEnd: "11/2022",
     website: null,
     keyValues: [
-      "Development of web-application for bank clients (SPA + microfrontend)",
-      "Unit and integration testing (Jest)",
+      "Development of web-application for bank clients",
+      "Unit and integration testing",
       "Code review and mentoring",
+    ],
+    techStack: [
+      "React",
+      "Redux",
+      "React-Query",
+      "MicroFrontend",
+      "React Testing Library",
+      "Storybook",
+      "Atlassian",
     ],
   },
   {
@@ -74,9 +87,18 @@ const WORK_EXPERIENCE = [
     dateEnd: "03/2022",
     website: { link: "https://www.epam.com/", label: "epam.com" },
     keyValues: [
-      "Development of web-application for bank clients (SPA + microfrontend)",
-      "Unit and integration testing (Jest)",
+      "Development of web-application for bank clients",
+      "Unit and integration testing",
       "Code review and mentoring",
+    ],
+    techStack: [
+      "React",
+      "Redux",
+      "React-Query",
+      "MicroFrontend",
+      "React Testing Library",
+      "Storybook",
+      "Atlassian",
     ],
   },
   {
@@ -86,127 +108,118 @@ const WORK_EXPERIENCE = [
     dateEnd: "04/2021",
     website: null,
     keyValues: [
-      "SPA development (React, Redux, Redux-Saga)",
-      "Legacy projects support (xslt, jquery, html, css)",
-      "Finalization and support of design system (storybook)",
+      "SPA development",
+      "Legacy projects support",
+      "Finalization and support of design system",
       "Optimization of the client side of the application",
-      "REST API design",
+      "API design",
+    ],
+    techStack: [
+      "React",
+      "Redux",
+      "Redux-Thunk",
+      "Redux-Saga",
+      "jquery",
+      "xslt",
+      "RTK",
+      "Jest",
+      "yarn workspaces",
+      "gitlab Ci/CD",
     ],
   },
 ];
 
-type WorkExperience = typeof WORK_EXPERIENCE;
-
-const CONNECTIONS = WORK_EXPERIENCE.reduce(
-  (acc: DiagramProps["connections"], value: WorkExperience[number], index) => {
-    if (acc.length === 0) {
-      return [
-        {
-          id: index,
-          toTarget: "",
-          fromTarget: value.companyName,
-          ...DEFAULT,
-        },
-      ];
-    }
-    if (WORK_EXPERIENCE.length === index + 1) {
-      const last = acc.pop()!;
-      last.toTarget = value.companyName;
-      return [...acc, last];
-    }
-    const last = acc.pop()!;
-    last.toTarget = value.companyName;
-
-    return [
-      ...acc,
-      last,
-      {
-        id: index,
-        toTarget: "",
-        fromTarget: value.companyName,
-        ...DEFAULT,
-      },
-    ];
-  },
-  []
-);
-
 export const Experience = () => {
   const size = useAdaptiveFontSize();
+  const width = useAdaptiveSizeMap({
+    [WindowSize.small]: "100%",
+    [WindowSize.medium]: "100%",
+    [WindowSize.large]: "60%",
+    [WindowSize.xlarge]: "80%",
+  });
   return (
-    <Section title="Experience" isDark>
+    <Section id={NAV_LINKS.experience} title="Experience" isDark>
       <Box width="100%">
-        <Stack>
-          <Box gap="32px">
-            {WORK_EXPERIENCE.map(
-              (
-                {
-                  website,
-                  companyName,
-                  jobTitle,
-                  dateStart,
-                  dateEnd,
-                  keyValues,
-                },
-                index
-              ) => (
-                <Box
-                  key={companyName}
-                  id={companyName}
-                  width={{
-                    min: "240px",
-                    width: "60%",
-                    max: "700px",
-                  }}
-                  pad="small"
-                  alignSelf={index % 2 ? "start" : "end"}
-                >
-                  <Card pad={size} gap="medium" background="light-2">
-                    <CardHeader direction="column" align="start" gap="6px">
+        <Box gap="32px">
+          {WORK_EXPERIENCE.map(
+            (
+              {
+                website,
+                companyName,
+                jobTitle,
+                dateStart,
+                dateEnd,
+                keyValues,
+                techStack,
+              },
+              index
+            ) => (
+              <Box
+                key={dateStart}
+                width={{
+                  min: "240px",
+                  width: width,
+                  max: "1200px",
+                }}
+                pad="small"
+                alignSelf={index % 2 ? "start" : "end"}
+                data-sal="zoom-in"
+                data-sal-duration={1_400}
+              >
+                <Card pad={size} background="light-2">
+                  <CardHeader
+                    direction="column"
+                    align="start"
+                    gap="6px"
+                    margin={{ bottom: "medium" }}
+                  >
+                    <Heading
+                      level={3}
+                      size={size}
+                      margin={{ top: "0px", bottom: "0px" }}
+                    >
+                      {companyName}
+                    </Heading>
+                    {website && (
+                      <Link
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href={website.link}
+                        label={website.label}
+                      />
+                    )}
+                  </CardHeader>
+                  <CardBody margin={{ bottom: "16px" }}>
+                    <Box margin={{ bottom: "16px" }}>
                       <Heading
-                        level={3}
+                        level={4}
                         size={size}
                         margin={{ top: "0px", bottom: "0px" }}
                       >
-                        {companyName}
+                        {jobTitle}
                       </Heading>
-                      {website && (
-                        <Link
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          href={website.link}
-                          label={website.label}
-                        />
-                      )}
-                    </CardHeader>
-                    <CardBody>
-                      <Box margin={{ bottom: "16px" }}>
-                        <Heading
-                          level={4}
-                          size={size}
-                          margin={{ top: "0px", bottom: "0px" }}
-                        >
-                          {jobTitle}
-                        </Heading>
-                        <Text>{`(${dateStart} - ${
-                          dateEnd || "current"
-                        })`}</Text>
-                      </Box>
-                      <Box>
-                        {keyValues.map((text) => (
-                          <Text margin={{ top: "4px" }} key={text}>
-                            {"• "} {text}
-                          </Text>
-                        ))}
-                      </Box>
-                    </CardBody>
-                  </Card>
-                </Box>
-              )
-            )}
-          </Box>
-          <Diagram connections={CONNECTIONS} />
-        </Stack>
+                      <Text>{`(${dateStart} - ${dateEnd || "current"})`}</Text>
+                    </Box>
+                    <Box>
+                      {keyValues.map((text) => (
+                        <Text margin={{ top: "4px" }} key={text}>
+                          {"• "} {text}
+                        </Text>
+                      ))}
+                    </Box>
+                  </CardBody>
+                  <CardFooter>
+                    <TagWrapper direction="row" wrap>
+                      {techStack.map((text) => (
+                        <Tag key={text} size="small" value={text} />
+                      ))}
+                    </TagWrapper>
+                  </CardFooter>
+                </Card>
+              </Box>
+            )
+          )}
+        </Box>
       </Box>
     </Section>
   );

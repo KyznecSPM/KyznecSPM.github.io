@@ -1,13 +1,22 @@
 import React from "react";
 
-import { Box } from "grommet";
+import { Box, Paragraph } from "grommet";
+
+import { getYear } from "date-fns";
+
+import { CopyrightIcon } from "../icons/Copyright";
 
 import { Section } from "./Section";
 
 export const Contact = () => {
   return (
-    <Section title="Contact" isDark>
-      <Box align="center">Contact</Box>
+    <Section isDark>
+      <Box align="center" direction="row">
+        <CopyrightIcon />
+        <Paragraph margin={{ left: "8px" }}>
+          Dmitrii Emelianov {getYear(new Date())}
+        </Paragraph>
+      </Box>
     </Section>
   );
 };

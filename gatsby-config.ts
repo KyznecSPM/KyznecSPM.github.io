@@ -3,20 +3,22 @@ import type { GatsbyConfig } from "gatsby";
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Dmitrii Emelianov`,
-    siteUrl: `https://www.yourdomain.tld`,
+    description: `Full-stack developer Emelianov Dmitrii`,
+    image: `src/assets/favicon.png`,
+    siteUrl: `https://kyznecspm.github.io/`,
   },
   graphqlTypegen: true,
   plugins: [
     "gatsby-plugin-styled-components",
     "gatsby-plugin-image",
-    // "gatsby-plugin-google-gtag",
-    "gatsby-plugin-sitemap",
-    // {
-    //   resolve: "gatsby-plugin-manifest",
-    //   options: {
-    //     icon: "src/images/icon.png",
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: ["G-K0H4S5FG6J"],
+      },
+    },
+    // "gatsby-plugin-sitemap",
+    `gatsby-plugin-scroll-reveal`,
     "gatsby-plugin-mdx",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
@@ -55,8 +57,8 @@ const config: GatsbyConfig = {
     {
       resolve: "gatsby-plugin-svgr",
       options: {
-        prettier: true, // use prettier to format JS code output (default)
-        svgo: true, // use svgo to optimize SVGs (default)
+        prettier: true,
+        svgo: true,
       },
     },
   ],

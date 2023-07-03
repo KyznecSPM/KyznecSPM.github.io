@@ -12,12 +12,12 @@ export const HTMLAcademyIcon: Icon = (props) => (
     <g>
       <path
         stroke="#444"
-        stroke-width="2.791"
+        strokeWidth="2.791"
         d="m2.545 6.364 37.091-3.819 36.91 3.819v68.181l-36.91 21.819-37.09-21.819V6.364Z"
       />
       <path
         stroke="#444"
-        stroke-width="2.057"
+        strokeWidth="2.057"
         d="m3.09 38 35.273-20.545 38 20.545v2.182L39.637 61.818 3.091 40.182V38Z"
       />
       <path

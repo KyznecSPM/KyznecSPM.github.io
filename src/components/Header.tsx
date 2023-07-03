@@ -42,9 +42,10 @@ export const Header = () => {
         </Box>
       ) : (
         <Box justify="end" direction="row" gap="medium">
-          {MENU_ITEMS.map(({ label, id }) => (
-            <Anchor href={`#${id}`} label={label} />
-          ))}
+          {MENU_ITEMS.length !== 0 &&
+            MENU_ITEMS.map(({ label, id }) => (
+              <Anchor href={`#${id}`} label={label} />
+            ))}
         </Box>
       )}
     </HeaderComponent>

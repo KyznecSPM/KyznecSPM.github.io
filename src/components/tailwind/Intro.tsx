@@ -1,6 +1,6 @@
 import React from "react";
 
-import { FixedObject } from "gatsby-image";
+import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 import styled from "styled-components";
 
 import cv from "../../assets/CV_Dmitrii_Emelianov.pdf";
@@ -34,9 +34,11 @@ const LINKS = [
 export const Intro = ({
   mobileImage,
   tabletImage,
+  desktopImage,
 }: {
-  mobileImage: FixedObject;
-  tabletImage: FixedObject;
+  mobileImage?: IGatsbyImageData;
+  tabletImage?: IGatsbyImageData;
+  desktopImage?: IGatsbyImageData;
 }) => {
   return (
     <>
@@ -61,20 +63,32 @@ export const Intro = ({
         <div className="container mx-auto h-full min-w-[300px]">
           <div className="flex h-full">
             <div className="flex-1 lg:flex-initial flex flex-col justify-center p-4 items-center text-center md:text-start md:items-start">
-              <img
-                alt="avatar.png"
-                src={mobileImage.srcWebp}
-                className="block sm:hidden md:hidden lg:hidden xl:hidden 2xl:hidden h-[170px] min-h-[170px] mb-6 rounded-full"
-              />
-              <img
-                alt="avatar.png"
-                src={tabletImage.srcWebp}
-                className="hidden sm:block md:hidden lg:hidden xl:hidden 2xl:hidden h-[400px] min-h-[400px] mb-6 border-b-slate-300 border-b-2"
-              />
-              <h1 className="text-text_main text-4xl font-semibold mb-2 md:text-6xl lg:text-7xl xl:text-8xl">
-                Dmitrii Emelianov
-              </h1>
-              <p className="text-text_main text-2xl font-semibold mb-6 md:text-4xl lg:text-5xl xl:text-6xl">
+              {mobileImage && (
+                <GatsbyImage
+                  alt="avatar.png"
+                  image={{ ...mobileImage, height: 170 }}
+                  className="block sm:hidden md:hidden lg:hidden xl:hidden 2xl:hidden h-[170px] min-h-[170px] mb-6 rounded-full"
+                  // className="block sm:hidden md:hidden lg:hidden xl:hidden 2xl:hidden mb-6 rounded-full"
+                />
+              )}
+              {tabletImage && (
+                <GatsbyImage
+                  alt="avatar.png"
+                  image={{ ...tabletImage, height: 400 }}
+                  className="hidden sm:block md:hidden lg:hidden xl:hidden 2xl:hidden h-[400px] min-h-[400px] mb-6 border-b-slate-300 border-b-2"
+                  // className="hidden sm:block md:hidden lg:hidden xl:hidden 2xl:hidden mb-6 border-b-slate-300 border-b-2"
+                />
+              )}
+              <div data-sal="slide-right">
+                <h1 className="text-text_main text-4xl font-semibold mb-2 md:text-6xl lg:text-7xl xl:text-8xl">
+                  Dmitrii Emelianov
+                </h1>
+              </div>
+              <p
+                className="text-text_main text-2xl font-semibold mb-6 md:text-4xl lg:text-5xl xl:text-6xl"
+                data-sal="slide-right"
+                data-sal-duration={1_400}
+              >
                 Software Developer
               </p>
               <a
@@ -96,11 +110,13 @@ export const Intro = ({
               </div>
             </div>
             <div className="hidden md:flex relative lg:flex-1">
-              <img
-                alt="avatar.png"
-                src={tabletImage.srcWebp}
-                className="hidden md:block min-w-[825px] absolute bottom-0 md:right-[-420px] lg:right-[-210px]"
-              />
+              {desktopImage && (
+                <GatsbyImage
+                  alt="avatar.png"
+                  image={desktopImage}
+                  className="hidden md:block min-w-[825px] absolute bottom-0 md:right-[-420px] lg:right-[-210px]"
+                />
+              )}
             </div>
           </div>
         </div>

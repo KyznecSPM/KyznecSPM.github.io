@@ -2,30 +2,27 @@ import * as React from "react";
 
 import { graphql } from "gatsby";
 import type { HeadFC, PageProps } from "gatsby";
-import { FixedObject } from "gatsby-image";
+import { getImage, ImageDataLike } from "gatsby-plugin-image";
 
 import { SEO } from "../components/Seo";
 import { Intro } from "../components/tailwind/Intro";
 
 type DataProps = {
-  mobileImage: {
-    childImageSharp: {
-      fixed: FixedObject;
-    };
-  };
-  tabletImage: {
-    childImageSharp: {
-      fixed: FixedObject;
-    };
-  };
+  mobileImage: ImageDataLike;
+  tabletImage: ImageDataLike;
+  desktopImage: ImageDataLike;
 };
 
 const IndexPage = ({ data }: PageProps<DataProps>) => {
+  const mobileImage = getImage(data.mobileImage);
+  const tabletImage = getImage(data.tabletImage);
+  const desktopImage = getImage(data.desktopImage);
   return (
     <>
       <Intro
-        mobileImage={data.mobileImage.childImageSharp.fixed}
-        tabletImage={data.tabletImage.childImageSharp.fixed}
+        mobileImage={mobileImage}
+        tabletImage={tabletImage}
+        desktopImage={desktopImage}
       />
     </>
   );
@@ -39,26 +36,17 @@ export const query = graphql`
   query MyQuery {
     mobileImage: file(relativePath: { eq: "avatar_small.png" }) {
       childImageSharp {
-        fixed(height: 170, webpQuality: 100) {
-          base64
-          tracedSVG
-          aspectRatio
-          srcWebp
-          srcSetWebp
-          originalName
-        }
+        gatsbyImageData(height: 170)
       }
     }
     tabletImage: file(relativePath: { eq: "avatar.png" }) {
       childImageSharp {
-        fixed(width: 825, webpQuality: 100) {
-          base64
-          tracedSVG
-          aspectRatio
-          srcWebp
-          srcSetWebp
-          originalName
-        }
+        gatsbyImageData(width: 400)
+      }
+    }
+    desktopImage: file(relativePath: { eq: "avatar.png" }) {
+      childImageSharp {
+        gatsbyImageData(width: 825)
       }
     }
   }

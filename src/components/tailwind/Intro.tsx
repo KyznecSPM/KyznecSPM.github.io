@@ -79,10 +79,16 @@ export const Intro = ({
                   // className="hidden sm:block md:hidden lg:hidden xl:hidden 2xl:hidden mb-6 border-b-slate-300 border-b-2"
                 />
               )}
-              <h1 className="text-text_main text-4xl font-semibold mb-2 md:text-6xl lg:text-7xl xl:text-8xl">
-                Dmitrii Emelianov
-              </h1>
-              <p className="text-text_main text-2xl font-semibold mb-6 md:text-4xl lg:text-5xl xl:text-6xl">
+              <div data-sal="slide-right">
+                <h1 className="text-text_main text-4xl font-semibold mb-2 md:text-6xl lg:text-7xl xl:text-8xl">
+                  Dmitrii Emelianov
+                </h1>
+              </div>
+              <p
+                className="text-text_main text-2xl font-semibold mb-6 md:text-4xl lg:text-5xl xl:text-6xl"
+                data-sal="slide-right"
+                data-sal-duration={1_400}
+              >
                 Software Developer
               </p>
               <a

@@ -9,6 +9,7 @@ const config: GatsbyConfig = {
   },
   graphqlTypegen: true,
   plugins: [
+    "gatsby-plugin-postcss",
     "gatsby-plugin-styled-components",
     "gatsby-plugin-image",
     {

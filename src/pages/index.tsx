@@ -1,32 +1,65 @@
 import * as React from "react";
 
-import { Grommet } from "grommet";
-
+import { graphql } from "gatsby";
 import type { HeadFC, PageProps } from "gatsby";
-import { Page } from "grommet/components/Page";
+import { FixedObject } from "gatsby-image";
 
-import { AboutMe } from "../components/AboutMe";
-import { Contact } from "../components/Contact";
-import { Education } from "../components/Education";
-import { Experience } from "../components/Experience";
-import { Intro } from "../components/Intro";
 import { SEO } from "../components/Seo";
-import { theme } from "../theme";
+import { Intro } from "../components/tailwind/Intro";
 
-const IndexPage: React.FC<PageProps> = () => {
+type DataProps = {
+  mobileImage: {
+    childImageSharp: {
+      fixed: FixedObject;
+    };
+  };
+  tabletImage: {
+    childImageSharp: {
+      fixed: FixedObject;
+    };
+  };
+};
+
+const IndexPage = ({ data }: PageProps<DataProps>) => {
   return (
-    <Grommet full theme={theme}>
-      <Page kind="wide">
-        <Intro />
-        <AboutMe />
-        <Experience />
-        <Education />
-        <Contact />
-      </Page>
-    </Grommet>
+    <>
+      <Intro
+        mobileImage={data.mobileImage.childImageSharp.fixed}
+        tabletImage={data.tabletImage.childImageSharp.fixed}
+      />
+    </>
   );
 };
 
 export default IndexPage;
 
 export const Head: HeadFC = () => <SEO />;
+
+export const query = graphql`
+  query MyQuery {
+    mobileImage: file(relativePath: { eq: "avatar_small.png" }) {
+      childImageSharp {
+        fixed(height: 170, webpQuality: 100) {
+          base64
+          tracedSVG
+          aspectRatio
+          srcWebp
+          srcSetWebp
+          originalName
+        }
+      }
+    }
+    tabletImage: file(relativePath: { eq: "avatar.png" }) {
+      childImageSharp {
+        fixed(width: 825, webpQuality: 100) {
+          base64
+          tracedSVG
+          aspectRatio
+          srcWebp
+          srcSetWebp
+          originalName
+        }
+      }
+    }
+  }
+`;

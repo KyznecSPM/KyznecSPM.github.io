@@ -4,7 +4,7 @@ import { Box, Heading, ResponsiveContext } from "grommet";
 
 import { PageContent } from "grommet/components/PageContent";
 
-import { WindowSize } from "../utils";
+import { WindowSize } from "../../utils";
 
 export const Section = ({
   children,

@@ -4,7 +4,7 @@ import { Box, Paragraph } from "grommet";
 
 import { getYear } from "date-fns";
 
-import { CopyrightIcon } from "../icons/Copyright";
+import { CopyrightIcon } from "../../icons/Copyright";
 
 import { Section } from "./Section";
 

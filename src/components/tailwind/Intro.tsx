@@ -7,6 +7,8 @@ import cv from "../../assets/CV_Dmitrii_Emelianov.pdf";
 import { GithubIcon } from "../../icons/tailwind/Github";
 import { LinkedInIcon } from "../../icons/tailwind/LinkedIn";
 import { TelegramIcon } from "../../icons/tailwind/Telegram";
+import avatar from "../../images/avatar.png";
+import avatar_small from "../../images/avatar_small.png";
 import background from "../../images/background.webp";
 
 const Background = styled.section`
@@ -63,12 +65,11 @@ export const Intro = ({
         <div className="container mx-auto h-full min-w-[300px]">
           <div className="flex h-full">
             <div className="flex-1 lg:flex-initial flex flex-col justify-center p-4 items-center text-center md:text-start md:items-start">
-              {mobileImage && (
+              {/* {mobileImage && (
                 <GatsbyImage
                   alt="avatar.png"
                   image={{ ...mobileImage, height: 170 }}
                   className="block sm:hidden md:hidden lg:hidden xl:hidden 2xl:hidden h-[170px] min-h-[170px] mb-6 rounded-full"
-                  // className="block sm:hidden md:hidden lg:hidden xl:hidden 2xl:hidden mb-6 rounded-full"
                 />
               )}
               {tabletImage && (
@@ -76,24 +77,45 @@ export const Intro = ({
                   alt="avatar.png"
                   image={{ ...tabletImage, height: 400 }}
                   className="hidden sm:block md:hidden lg:hidden xl:hidden 2xl:hidden h-[400px] min-h-[400px] mb-6 border-b-slate-300 border-b-2"
-                  // className="hidden sm:block md:hidden lg:hidden xl:hidden 2xl:hidden mb-6 border-b-slate-300 border-b-2"
                 />
-              )}
-              <div>
-                <h1 className="text-text_main text-4xl font-semibold mb-2 md:text-6xl lg:text-7xl xl:text-8xl">
-                  Dmitrii Emelianov
-                </h1>
-              </div>
-              <p className="text-text_main text-2xl font-semibold mb-6 md:text-4xl lg:text-5xl xl:text-6xl">
+              )} */}
+              <img
+                className="block sm:hidden md:hidden lg:hidden xl:hidden 2xl:hidden h-[170px] min-h-[170px] mb-6 rounded-full"
+                src={avatar_small}
+                alt="avatar"
+              />
+              <img
+                className="hidden sm:block md:hidden lg:hidden xl:hidden 2xl:hidden h-[400px] min-h-[400px] mb-6 border-b-slate-300 border-b-2"
+                src={avatar}
+                alt="avatar"
+              />
+              <h1
+                data-sal="slide-right"
+                data-sal-duration={1400}
+                className="text-text_main text-4xl font-semibold mb-2 md:text-6xl lg:text-7xl xl:text-8xl"
+              >
+                Dmitrii Emelianov
+              </h1>
+              <p
+                data-sal="slide-right"
+                data-sal-duration={1400}
+                className="text-text_main text-2xl font-semibold mb-6 md:text-4xl lg:text-5xl xl:text-6xl"
+              >
                 Software Developer
               </p>
               <a
+                data-sal="fade"
+                data-sal-duration={1400}
                 className="text-brand text-base sm:text-xl xl:text-2xl mb-10 font-bold px-4 py-1 border-2 border-brand rounded-full hover:bg-brand hover:text-text_main focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-text_main"
                 href={cv}
               >
                 DOWNLOAD CV
               </a>
-              <div className="grid grid-cols-3 gap-4">
+              <div
+                className="grid grid-cols-3 gap-4"
+                data-sal="fade"
+                data-sal-duration={1400}
+              >
                 {LINKS.map(({ icon, href }) => (
                   <a
                     key={href}
@@ -106,13 +128,18 @@ export const Intro = ({
               </div>
             </div>
             <div className="hidden md:flex relative lg:flex-1">
-              {desktopImage && (
+              <img
+                alt="avatar.png"
+                src={avatar}
+                className="hidden md:block min-w-[825px] absolute bottom-0 md:right-[-420px] lg:right-[-210px]"
+              />
+              {/* {desktopImage && (
                 <GatsbyImage
                   alt="avatar.png"
                   image={desktopImage}
                   className="hidden md:block min-w-[825px] absolute bottom-0 md:right-[-420px] lg:right-[-210px]"
                 />
-              )}
+              )} */}
             </div>
           </div>
         </div>

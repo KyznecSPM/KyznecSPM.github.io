@@ -21,7 +21,24 @@ const config: GatsbyConfig = {
     // "gatsby-plugin-sitemap",
     `gatsby-plugin-scroll-reveal`,
     "gatsby-plugin-mdx",
-    "gatsby-plugin-sharp",
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          formats: [`auto`, `webp`],
+          placeholder: `blurred`,
+          quality: 100,
+          breakpoints: [640, 768, 1024, 1280, 1536],
+          backgroundColor: `transparent`,
+          tracedSVGOptions: {},
+          blurredOptions: {},
+          jpgOptions: {},
+          pngOptions: {},
+          webpOptions: {},
+          avifOptions: {},
+        },
+      },
+    },
     "gatsby-transformer-sharp",
     {
       resolve: "gatsby-source-filesystem",

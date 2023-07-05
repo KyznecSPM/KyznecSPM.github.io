@@ -11,9 +11,9 @@ import {
 import { Menu as MenuIcon } from "grommet-icons";
 import styled from "styled-components";
 
-import { MENU_ITEMS } from "../constants";
-import { LogoIcon } from "../icons/Logo";
-import { WindowSize } from "../utils";
+import { MENU_ITEMS } from "../../constants";
+import { LogoIcon } from "../../icons/Logo";
+import { WindowSize } from "../../utils";
 
 const HeaderComponent = styled(LibHeaderComponent)`
   z-index: 2;

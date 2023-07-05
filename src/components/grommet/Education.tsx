@@ -2,15 +2,15 @@ import React from "react";
 
 import { Box, Heading, Text } from "grommet";
 
-import { NAV_LINKS } from "../constants";
-import { useAdaptiveFontSize } from "../hooks/useAdaptiveFontSize";
-import { useAdaptiveSizeMap } from "../hooks/useAdaptiveSize";
-import { HexletIcon } from "../icons/Hexlet";
-import { HTMLAcademyIcon } from "../icons/HTMLAcademy";
-import { MaiIcon } from "../icons/Mai";
-import { RsSchoolIcon } from "../icons/RsSchool";
-import { UdemyIcon } from "../icons/Udemy";
-import { WindowSize } from "../utils";
+import { NAV_LINKS } from "../../constants";
+import { useAdaptiveFontSize } from "../../hooks/useAdaptiveFontSize";
+import { useAdaptiveSizeMap } from "../../hooks/useAdaptiveSize";
+import { HexletIcon } from "../../icons/Hexlet";
+import { HTMLAcademyIcon } from "../../icons/HTMLAcademy";
+import { MaiIcon } from "../../icons/Mai";
+import { RsSchoolIcon } from "../../icons/RsSchool";
+import { UdemyIcon } from "../../icons/Udemy";
+import { WindowSize } from "../../utils";
 
 import { Section } from "./Section";
 

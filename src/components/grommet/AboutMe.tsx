@@ -4,10 +4,10 @@ import { Box, Heading, Text as LibText, Paragraph } from "grommet";
 
 import styled from "styled-components";
 
-import { NAV_LINKS } from "../constants";
-import { useAdaptiveFontSize } from "../hooks/useAdaptiveFontSize";
-import { useAdaptiveSizeMap } from "../hooks/useAdaptiveSize";
-import { WindowSize } from "../utils";
+import { NAV_LINKS } from "../../constants";
+import { useAdaptiveFontSize } from "../../hooks/useAdaptiveFontSize";
+import { useAdaptiveSizeMap } from "../../hooks/useAdaptiveSize";
+import { WindowSize } from "../../utils";
 
 import { Section } from "./Section";
 

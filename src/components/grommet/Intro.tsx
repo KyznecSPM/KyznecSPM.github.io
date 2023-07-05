@@ -14,15 +14,15 @@ import { TextAlignType, HeightType } from "grommet/utils";
 import { Mail } from "grommet-icons";
 import styled from "styled-components";
 
-import cv_link from "../assets/CV_Dmitrii_Emelianov.pdf";
-import { useAdaptiveFontSize } from "../hooks/useAdaptiveFontSize";
-import { GithubIcon } from "../icons/Github";
-import { LinkedInIcon } from "../icons/LinkedIn";
-import { TelegramIcon } from "../icons/Telegram";
-import avatar from "../images/avatar.png";
-import avatar_small from "../images/avatar_small.png";
-import background from "../images/background.webp";
-import { WindowSize } from "../utils";
+import cv_link from "../../assets/CV_Dmitrii_Emelianov.pdf";
+import { useAdaptiveFontSize } from "../../hooks/useAdaptiveFontSize";
+import { GithubIcon } from "../../icons/Github";
+import { LinkedInIcon } from "../../icons/LinkedIn";
+import { TelegramIcon } from "../../icons/Telegram";
+import avatar from "../../images/avatar.png";
+import avatar_small from "../../images/avatar_small.png";
+import background from "../../images/background.webp";
+import { WindowSize } from "../../utils";
 
 import { Header } from "./Header";
 

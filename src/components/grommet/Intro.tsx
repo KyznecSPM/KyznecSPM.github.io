@@ -24,10 +24,11 @@ import avatar_small from "../../images/avatar_small.png";
 import background from "../../images/background.webp";
 import { WindowSize } from "../../utils";
 
-import { Header } from "./Header";
-
 const ImageWrapper = styled(Box)`
   position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
 `;
 
 const Image = styled(LibImage)`
@@ -37,7 +38,7 @@ const Image = styled(LibImage)`
 `;
 
 const FULL_NAME = "Dmitrii Emelianov";
-const JOB_TITLE = "Software Developer";
+const JOB_TITLE = "Full Stack Developer";
 const DOWNLOAD_BUTTON = "DOWNLOAD CV";
 
 const FONT_COLOR = "rgba(237, 237, 237, 0.80)";
@@ -48,7 +49,7 @@ type Height = {
 
 const HEIGHT: Height = {
   [WindowSize.small]: {
-    min: "500px",
+    min: "620px",
     max: "1280px",
     height: "100vh",
   },
@@ -69,10 +70,15 @@ const HEIGHT: Height = {
   },
 };
 
+const IMAGE_SIZE = {
+  [WindowSize.large]: "800px",
+  [WindowSize.xlarge]: "850px",
+};
+
 const LINKS = [
   {
     icon: <Mail />,
-    href: "",
+    href: "mailto:emelianovdmitriy@gmail.com",
   },
   {
     icon: <TelegramIcon />,
@@ -184,7 +190,6 @@ export const Intro = () => {
         image: `url(${background})`,
       }}
     >
-      <Header />
       {isDesktop ? (
         <Box direction="row" height="100%">
           <Box alignSelf="center">
@@ -192,7 +197,7 @@ export const Intro = () => {
           </Box>
           <Box flex justify="end" align="center">
             <ImageWrapper animation={[{ type: "fadeIn", duration: 1_400 }]}>
-              <Image src={avatar} />
+              <Image width={IMAGE_SIZE[size]} src={avatar} />
             </ImageWrapper>
           </Box>
         </Box>

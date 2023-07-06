@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useContext } from "react";
+import { PropsWithChildren, useContext } from "react";
 
 import { Box, Heading, ResponsiveContext } from "grommet";
 
@@ -21,7 +21,7 @@ export const Section = ({
     <PageContent
       id={id}
       as="section"
-      pad={{ horizontal: size, bottom: "64px", top: "32px" }}
+      pad={{ horizontal: size, bottom: "64px", top: "64px" }}
       width={{ min: "0px", max: "1536px", width: "100%" }}
       background={{
         fill: "horizontal",
@@ -30,7 +30,7 @@ export const Section = ({
     >
       <Box align="center">
         {title && (
-          <Heading level={2} margin={{ bottom: "48px" }}>
+          <Heading level={2} margin={{ bottom: "48px", top: "0" }}>
             {title}
           </Heading>
         )}

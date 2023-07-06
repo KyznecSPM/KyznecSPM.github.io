@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Box, Heading, Text as LibText, Paragraph } from "grommet";
 
 import styled from "styled-components";
@@ -33,11 +31,9 @@ const HARD_SKILLS = [
     values: [
       "React",
       "Redux",
-      "React Query",
-      "Formik",
-      "React Hook Form",
-      "Koa",
+      "Angular",
       "Gatsby",
+      "Koa",
       "Nest",
       "Apollo GraphQL",
     ],

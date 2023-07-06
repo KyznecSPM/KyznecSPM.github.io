@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Box, Heading, Text } from "grommet";
 
 import { NAV_LINKS } from "../../constants";

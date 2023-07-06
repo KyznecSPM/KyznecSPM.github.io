@@ -15,8 +15,7 @@ const Background = styled.section`
   background-image: url(${background});
 `;
 
-const className =
-  "fill-text_second stroke-text_second color-text_second inline-block";
+const className = "inline-block";
 
 const LINKS = [
   {
@@ -61,7 +60,7 @@ export const Intro = ({
           </svg>
         </div>
       </header>
-      <Background className="h-screen w-full bg-cover bg-center bg-no-repeat pt-24 min-w-[300px] overflow-x-auto">
+      <Background className="h-screen w-full bg-cover bg-center bg-no-repeat pt-24 min-w-[300px] overflow-x-hidden">
         <div className="container mx-auto h-full min-w-[300px]">
           <div className="flex h-full">
             <div className="flex-1 lg:flex-initial flex flex-col justify-center p-4 items-center text-center md:text-start md:items-start">
@@ -69,10 +68,10 @@ export const Intro = ({
                 <GatsbyImage
                   alt="avatar.png"
                   image={{ ...mobileImage, height: 170 }}
-                  className="block sm:hidden md:hidden lg:hidden xl:hidden 2xl:hidden h-[170px] min-h-[170px] mb-6 rounded-full"
+                  className="h-[170px] min-h-[170px] mb-6 rounded-full"
                 />
-              )}
-              {tabletImage && (
+              )} */}
+              {/* {tabletImage && (
                 <GatsbyImage
                   alt="avatar.png"
                   image={{ ...tabletImage, height: 400 }}
@@ -89,37 +88,23 @@ export const Intro = ({
                 src={avatar}
                 alt="avatar"
               />
-              <h1
-                data-sal="slide-right"
-                data-sal-duration={1400}
-                className="text-text_main text-4xl font-semibold mb-2 md:text-6xl lg:text-7xl xl:text-8xl"
-              >
+              <h1 className="text-text_main text-4xl font-semibold mb-2 md:text-6xl lg:text-7xl xl:text-8xl">
                 Dmitrii Emelianov
               </h1>
-              <p
-                data-sal="slide-right"
-                data-sal-duration={1400}
-                className="text-text_main text-2xl font-semibold mb-6 md:text-4xl lg:text-5xl xl:text-6xl"
-              >
+              <p className="text-text_main text-2xl font-semibold mb-6 md:text-4xl lg:text-5xl xl:text-6xl">
                 Software Developer
               </p>
               <a
-                data-sal="fade"
-                data-sal-duration={1400}
                 className="text-brand text-base sm:text-xl xl:text-2xl mb-10 font-bold px-4 py-1 border-2 border-brand rounded-full hover:bg-brand hover:text-text_main focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-text_main"
                 href={cv}
               >
                 DOWNLOAD CV
               </a>
-              <div
-                className="grid grid-cols-3 gap-4"
-                data-sal="fade"
-                data-sal-duration={1400}
-              >
+              <div className="grid grid-cols-3 gap-4">
                 {LINKS.map(({ icon, href }) => (
                   <a
                     key={href}
-                    className="flex w-12 sm:w-14 xl:w-16 p-3 mb-4 border-2 border-brand rounded-3xl bg-brand hover:text-text_main focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-text_main"
+                    className="flex w-12 sm:w-14 xl:w-16 p-3 mb-4 border-2 border-brand rounded-3xl bg-brand text-text_main hover:text-brand focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-text_main hover:bg-text_second"
                     href={href}
                   >
                     {icon}
